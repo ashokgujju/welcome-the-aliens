@@ -1,5 +1,5 @@
 interface FileGenerator {
 	
-	public void export();
+	public void export(Alien alien);
 	public String getFileType();
 }

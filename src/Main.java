@@ -1,20 +1,10 @@
-
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome To Earth");
-		registration();
-		exportDataToFile();
-	}
+		System.out.println("Hi there!, Welcome To Earth..!\n");
 
-	private static void exportDataToFile() {
+		Alien alien = new Registration().createAlien();
 		OutputGenerator output = new OutputGenerator();
-		output.generateFile();
+		output.exportDetailsToFile(alien);
 	}
-
-	private static void registration() {
-		Registration registration = new Registration();
-		registration.createAlien();
-	}
-
 }

@@ -11,26 +11,28 @@ public class OutputGenerator {
 	private Scanner input = new Scanner(System.in);
 	private HashMap<String, FileGenerator> fileGenerators;
 
-	public void generateFile() {
+	public void exportDetailsToFile(Alien alien) {
 		fileGenerators = getAvailFileGenerators();
 		FileGenerator generator = chooseFileFormat();
-		generator.export();
+		generator.export(alien);
 	}
 
 	private FileGenerator chooseFileFormat() {
+		System.out.println("Which file format you would like to export your details into?");
 		Set<String> formats = fileGenerators.keySet();
 		do {
-			System.out.println("Available File formats:");
+			System.out.println("Available file formats are,");
 			for (String format : formats) {
 				System.out.println(format);
 			}
 
-			System.out.println("Enter your choice: ");
+			System.out.println("\nEnter your choice: ");
 			String choice = input.nextLine();
 			if (formats.contains(choice)) {
 				return fileGenerators.get(choice);
 			} else {
-				System.out.println("Invalid input.. Try again..!");
+				System.out
+						.println("Invalid choice.. You should enter exactly the same word..!\n");
 			}
 		} while (true);
 	}

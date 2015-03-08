@@ -6,12 +6,6 @@ public class Alien {
 	private int noOfLegs;
 	private String homePlanet;
 
-	private static final Alien INSTANCE = new Alien();
-
-	public static Alien getInstance() {
-		return INSTANCE;
-	}
-
 	public String getCodeName() {
 		return codeName;
 	}

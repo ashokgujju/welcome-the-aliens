@@ -8,21 +8,22 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class PdfFormatGenerator implements FileGenerator {
 
-	private Alien alien = Alien.getInstance();
 	private final String FILE_EXTENSION = ".pdf";
 	public static final String FILE_TYPE = "PDF";
 
-	public void export() {
+	public void export(Alien alien) {
 		String fileName = alien.getCodeName() + FILE_EXTENSION;
 
 		Document document = new Document();
 		try {
 			PdfWriter.getInstance(document, new FileOutputStream(fileName));
 			document.open();
-			addContent(document);
+			addContent(document, alien);
 			document.close();
 
-			System.out.println("Pdf file generated!");
+			System.out.println("\nYour details has been exported to txt file successfully!");
+			System.out.println("Please use this file to identify yourself on the earth!");
+			System.out.println("Bye, Have a good time!");
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -30,7 +31,7 @@ public class PdfFormatGenerator implements FileGenerator {
 		}
 	}
 
-	private void addContent(Document document) throws DocumentException {
+	private void addContent(Document document, Alien alien) throws DocumentException {
 		document.add(new Paragraph("Code Name: " + alien.getCodeName()));
 		document.add(new Paragraph("Blood Color: " + alien.getBloodColor()));
 		document.add(new Paragraph("No of Antennas: " + alien.getNoOfAntennas()));
