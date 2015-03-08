@@ -13,7 +13,7 @@ public class Registration {
 		saveNoOfLegs();
 		saveHomePlanet();
 
-		System.out.println("Registration successful!");
+		System.out.println("Registration successful!\n");
 	}
 
 	private void saveCodeName() {
