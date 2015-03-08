@@ -20,12 +20,13 @@ public class TxtFormatGenerator implements FileGenerator {
 			e.printStackTrace();
 		}
 
-		System.out.println("\nYour details has been exported to pdf file successfully!");
-		System.out.println("Please use this file to identify yourself on the earth!");
-		System.out.println("Bye, Have a good time!");
+		System.out.println("\nYour details has been exported to txt file successfully!");
 	}
 
 	private void addContent(BufferedWriter bw, Alien alien) throws IOException {
+		bw.write("IDENTITY CARD");
+		bw.newLine();
+		bw.newLine();
 		bw.write("Code Name: " + alien.getCodeName());
 		bw.newLine();
 		bw.write("Blood Color: " + alien.getBloodColor());

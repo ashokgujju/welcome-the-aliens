@@ -38,12 +38,12 @@ public class Alien {
 		this.noOfLegs = noOfLegs;
 	}
 
-	public String getHomePlanet() {
-		return homePlanet;
-	}
-
 	public void setHomePlanet(String homePlanet) {
 		this.homePlanet = homePlanet;
+	}
+
+	public String getHomePlanet() {
+		return homePlanet;
 	}
 
 }

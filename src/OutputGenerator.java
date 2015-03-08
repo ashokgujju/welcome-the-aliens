@@ -15,6 +15,9 @@ public class OutputGenerator {
 		fileGenerators = getAvailFileGenerators();
 		FileGenerator generator = chooseFileFormat();
 		generator.export(alien);
+		
+		System.out.println("Please use this file to identify yourself on the earth!");
+		System.out.println("Bye, Have a good time!");
 	}
 
 	private FileGenerator chooseFileFormat() {
@@ -30,9 +33,9 @@ public class OutputGenerator {
 			String choice = input.nextLine();
 			if (formats.contains(choice)) {
 				return fileGenerators.get(choice);
-			} else {
-				System.out
-						.println("Invalid choice.. You should enter exactly the same word..!\n");
+			} 
+			else {
+				System.out.println("Invalid choice.. You should enter exactly the same word..!\n");
 			}
 		} while (true);
 	}
@@ -45,8 +48,7 @@ public class OutputGenerator {
 
 		for (File file : files) {
 			try {
-				Class<?> cls = Class.forName(file.getName().replaceAll("\\..*",
-						""));
+				Class<?> cls = Class.forName(file.getName().replaceAll("\\..*", ""));
 				FileGenerator generator = (FileGenerator) cls.newInstance();
 				generators.put(generator.getFileType(), generator);
 			} catch (ClassNotFoundException e) {
@@ -58,7 +60,6 @@ public class OutputGenerator {
 			}
 		}
 		return generators;
-
 	}
 
 }

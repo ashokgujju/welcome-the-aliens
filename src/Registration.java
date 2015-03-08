@@ -1,91 +1,50 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Registration {
 
 	private Scanner input = new Scanner(System.in);
-	private Alien alien = new Alien();
-
-	public Registration() {
-		System.out.println("We need some of your details to identify you on the earth..!");
-		System.out.println("Please provide us the following details...!\n");
-	}
 
 	public Alien createAlien() {
-		saveCodeName();
-		saveBloodColor();
-		saveNoOfAntennas();
-		saveNoOfLegs();
-		saveHomePlanet();
+		System.out.println("We need some of your details to identify you on the earth..!");
+		System.out.println("Please provide the following details...!\n");
 		
-		System.out.println("Your have successfully registeredl!\n");
-		
+		Alien alien = new Alien();
+		alien.setCodeName(getString("Enter Your Code Name: "));
+		alien.setBloodColor(getString("Enter Your Blood Color: "));
+		alien.setNoOfAntennas(getNumber("Enter No of Antennas You Have: "));
+		alien.setNoOfLegs(getNumber("Enter No of Legs You Have: "));
+		alien.setHomePlanet(getString("Enter Your Home Planet Name: "));
+
+		System.out.println("Your have registered successfully!\n");
+
 		return alien;
 	}
 
-	private void saveCodeName() {
+	private int getNumber(String message) {
 		do {
-			System.out.println("Enter Your Code Name: ");
-			alien.setCodeName(input.nextLine());
+			System.out.println(message);
 			try {
-				Double.parseDouble(alien.getCodeName());
-				System.out.println("Invalid input..! It should be a String..!\n");
+				return Integer.parseInt(input.nextLine());
 			} catch (NumberFormatException e) {
-				break;
-			}
-		} while (true);
-	}
-
-	private void saveBloodColor() {
-		do {
-			System.out.println("Enter Your Blood Color: ");
-			alien.setBloodColor(input.nextLine());
-			try {
-				Double.parseDouble(alien.getBloodColor());
-				System.out.println("Invalid input..! It should be a String..!\n");
-			} catch (NumberFormatException e) {
-				break;
-			}
-		} while (true);
-	}
-
-	private void saveNoOfLegs() {
-		do {
-			System.out.println("Enter No of Legs You Have: ");
-			try {
-				alien.setNoOfLegs(input.nextInt());
-				break;
-			} catch (InputMismatchException e) {
 				System.out.println("Invalid input..! It should be an Integer..!\n");
-				input.nextLine();
 			}
 		} while (true);
+
 	}
 
-	private void saveNoOfAntennas() {
+	private String getString(String message) {
+		String str = null;
 		do {
-			System.out.println("Enter No of Antennas You Have: ");
+			System.out.println(message);
+			str = input.nextLine();
 			try {
-				alien.setNoOfAntennas(input.nextInt());
-				break;
-			} catch (InputMismatchException e) {
-				System.out.println("Invalid input..! It should be an Integer..!\n");
-				input.nextLine();
-			}
-		} while (true);
-	}
-
-	private void saveHomePlanet() {
-		do {
-			input.nextLine();
-			System.out.println("Enter Your Home Planet: ");
-			alien.setHomePlanet(input.nextLine());
-			try {
-				Double.parseDouble(alien.getHomePlanet());
+				Double.parseDouble(str);
 				System.out.println("Invalid input..! It should be a String..!\n");
 			} catch (NumberFormatException e) {
 				break;
 			}
 		} while (true);
+		return str;
 	}
+
 }
